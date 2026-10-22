@@ -13,6 +13,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.spm_java.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.spm_java.ui.pantry.PantryListActivity;
+import com.example.spm_java.ui.recipes.SuggestedRecipesActivity;
+import com.example.spm_java.ui.settings.SettingsActivity;
 
 // Parent screen displaying menu nav and layout
 public abstract class BaseActivity extends AppCompatActivity {
