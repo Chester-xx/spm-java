@@ -58,7 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         // Reselect activity to navigate to
         nav.setOnItemReselectedListener(item -> {
-            openTab(item.getItemId);
+            openTab(item.getItemId());
         });
 
     }
