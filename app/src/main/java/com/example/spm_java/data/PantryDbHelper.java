@@ -28,6 +28,9 @@ public class PantryDbHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE Table recipe (id Integer Primary Key AutoIncrement, name Text Not Null, steps Text Not Null)");
         db.execSQL("Create Table recipe_ingredient (id Integer Primary Key AutoIncrement, recipe_id Integer Not Null References recipe(id) On Delete Cascade, name Text Not Null, quantity Real Not Null, unit Text Not Null)");
 
+        // Seed data method
+        DatabaseSeeder.seed(db);
+
     }
 
     // Simple reset, acceptable while the schema is still at version 1
