@@ -50,4 +50,19 @@
     <string name="remove_expired_none">No expired ingredients</string>
     <string name="remove_expired_done">Expired ingredients removed: %1$d</string>
 
+    <!--  Suggested Recipes Screen  -->
+    <string name="recipes_title">Suggested Recipes</string>
+    <string name="recipes_empty">No recipes match your pantry</string>
+
+    <!--  Recipe Row  -->
+    <plurals name="recipe_ingredient_count">
+        <item quantity="one">%d ingredient</item>
+        <item quantity="other">%d ingredients</item>
+    </plurals>
+
+    <!--  Recipe Detail Screen  -->
+    <string name="recipe_detail_ingredients">Ingredients</string>
+    <string name="recipe_detail_method">Method</string>
+    <string name="recipe_detail_not_found">Recipe not found</string>
+
 </resources>
