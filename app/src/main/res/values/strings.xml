@@ -38,4 +38,16 @@
     <string name="error_not_found">Ingredient not found</string>
     <string name="error_save_failed">Could not save the ingredient</string>
 
+    <!--  Pantry List Dialogs  -->
+    <string name="dialog_cancel">Cancel</string>
+    <string name="delete_title">Delete ingredient?</string>
+    <string name="delete_message">Remove %1$s from your pantry?</string>
+    <string name="delete_confirm">Delete</string>
+    <string name="delete_done">%1$s deleted</string>
+    <string name="remove_expired_title">Remove expired ingredients?</string>
+    <string name="remove_expired_message">This deletes every ingredient that is past its expiry date (%1$d).</string>
+    <string name="remove_expired_confirm">Remove</string>
+    <string name="remove_expired_none">No expired ingredients</string>
+    <string name="remove_expired_done">Expired ingredients removed: %1$d</string>
+
 </resources>
