@@ -1,5 +1,6 @@
 package com.example.spm_java.model;
 
+// Ingredient model for recipe
 public class RecipeIngredient {
 
     // --- Attributes ---
