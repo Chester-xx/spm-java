@@ -23,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     // Returns layout id filling main screen area
     protected abstract int getContentLayoutId();
 
-    // Returns navigation id method
+    // Returns navigation method id
     protected abstract int getSelectedNavItemId();
 
     // Create base activity layout object
