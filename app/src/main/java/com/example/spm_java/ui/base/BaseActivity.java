@@ -71,7 +71,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         // Select the specific target from users selected navigation option
         if (itemId == R.id.nav_pantry) target = PantryListActivity.class;
-        else if (itemId = R.id.nav_recipes) target = SuggestedRecipesActivity.class;
+        else if (itemId == R.id.nav_recipes) target = SuggestedRecipesActivity.class;
         else target = SettingsActivity.class;
 
         // Declare new intent for activity parsing
