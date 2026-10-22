@@ -3,7 +3,7 @@ package com.example.spm_java.model;
 // Measurement units localed by family grouping and base unit
 public enum Unit {
 
-    // --- Item Units ---
+    // --- Item Units | Attributes ---
     GRAM("g", Family.MASS, 1.0),
     KILOGRAM("kg", Family.MASS, 1000.0),
     MILLILITRE("ml", Family.VOLUME, 1.0),
@@ -20,7 +20,7 @@ public enum Unit {
     private final Family family;
     private final double baseValue;
 
-    // Definition constructor
+    // --- Constructor ---
     Unit(String _symbol, Family _family, double _baseValue) {
 
         symbol = _symbol;
