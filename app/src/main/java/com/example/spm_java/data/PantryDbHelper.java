@@ -12,6 +12,7 @@ public class PantryDbHelper extends SQLiteOpenHelper {
     // --- Methods ---
 
     // Cascade delete ingredients on recipe
+    @Override
     public void onConfigure(SQLiteDatabase db) {
 
         super.onConfigure(db);
