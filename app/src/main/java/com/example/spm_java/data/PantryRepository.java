@@ -39,6 +39,9 @@ public class PantryRepository {
     // Deletes an item from db returning true or false whether an item was deleted
     public boolean delete(long id) { return helper.getWritableDatabase().delete("pantry_item", "id = ?", new String[]{ String.valueOf(id) }) > 0; }
 
+    // Deletes every item with an expiry date before today, returning how many were deleted
+    public int deleteExpired() { return helper.getWritableDatabase().delete("pantry_item", "expiry_date Is Not Null And expiry_date < ?", new String[]{ LocalDate.now().toString() }); }
+
     // Returns item or null by finding item in db
     public PantryItem getById(long id) {
 
