@@ -56,7 +56,7 @@ public class PantryRepository {
         List<PantryItem> items = new ArrayList<>();
 
         // Query db for all items ordered by name
-        try (Cursor cursor = helper.getReadableDatabase().query("pantry_item", null, null, null, null, null, "name COLLATE NOCASE ASC")) {
+        try (Cursor cursor = helper.getReadableDatabase().query("pantry_item", null, null, null, null, null, "name Collate NoCase Asc")) {
             while (cursor.moveToNext()) items.add(fromCursor(cursor));
         }
 
