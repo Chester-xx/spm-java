@@ -8,4 +8,15 @@
     <string name="nav_pantry">Pantry</string>
     <string name="nav_recipes">Recipes</string>
 
+    <!--  Pantry List Row  -->
+    <string name="pantry_item_expires">Expires %1$s</string>
+    <string name="pantry_item_expired">Expired %1$s</string>
+    <string name="pantry_item_delete_desc">Delete ingredient</string>
+
+    <!--  Pantry List Screen  -->
+    <string name="pantry_title">Pantry</string>
+    <string name="pantry_empty">Your pantry is empty, add ingredients</string>
+    <string name="pantry_add">Add ingredient</string>
+    <string name="pantry_remove_expired">Remove expired</string>
+
 </resources>
