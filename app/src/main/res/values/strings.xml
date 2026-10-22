@@ -12,6 +12,7 @@
     <string name="pantry_item_expires">Expires %1$s</string>
     <string name="pantry_item_expired">Expired %1$s</string>
     <string name="pantry_item_delete_desc">Delete ingredient</string>
+    <string name="pantry_item_expires_soon">Expires soon %1$s</string>
 
     <!--  Pantry List Screen  -->
     <string name="pantry_title">Pantry</string>
@@ -64,5 +65,12 @@
     <string name="recipe_detail_ingredients">Ingredients</string>
     <string name="recipe_detail_method">Method</string>
     <string name="recipe_detail_not_found">Recipe not found</string>
+
+    <!--  Settings Screen  -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_expiring_alerts">Expiring-soon alerts</string>
+    <string name="settings_expiring_hint">Highlight ingredients that expire within %1$d days</string>
+    <string name="settings_default_unit">Default unit</string>
+    <string name="settings_default_unit_help">Pre-selected when adding an ingredient</string>
 
 </resources>

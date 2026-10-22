@@ -13,6 +13,7 @@ import com.example.spm_java.R;
 import com.example.spm_java.data.PantryRepository;
 import com.example.spm_java.model.PantryItem;
 import com.example.spm_java.ui.base.BaseActivity;
+import com.example.spm_java.util.AppPrefs;
 import com.example.spm_java.util.IntentKeys;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -112,7 +113,7 @@ import java.util.List;
             List<PantryItem> items = repository.getAll();
 
             // Forward to adapter for display
-            adapter.setItems(items);
+            adapter.setItems(items, new AppPrefs(this).isExpiringAlertsEnabled());
 
             // Set visibility
             textEmpty.setVisibility(items.isEmpty() ? View.VISIBLE : View.GONE);

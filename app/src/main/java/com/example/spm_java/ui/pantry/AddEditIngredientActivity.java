@@ -12,6 +12,7 @@ import com.example.spm_java.data.PantryRepository;
 import com.example.spm_java.model.PantryItem;
 import com.example.spm_java.model.Unit;
 import com.example.spm_java.ui.base.BaseActivity;
+import com.example.spm_java.util.AppPrefs;
 import com.example.spm_java.util.IntentKeys;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
@@ -66,9 +67,9 @@ public class AddEditIngredientActivity extends BaseActivity {
         editExpiry = findViewById(R.id.edit_expiry);
         dropdownUnit = findViewById(R.id.dropdown_unit);
 
-        // Unit dropdown is filled from the fixed Unit list, grams by default
+        // Unit dropdown is filled from the fixed Unit list, starting on the default unit from settings
         dropdownUnit.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Unit.values()));
-        dropdownUnit.setText(Unit.GRAM.getSymbol(), false);
+        dropdownUnit.setText(new AppPrefs(this).getDefaultUnit().getSymbol(), false);
 
         // Get item id from intent
         long itemId = getIntent().getLongExtra(IntentKeys.EXTRA_PANTRY_ITEM_ID, IntentKeys.NO_ID);

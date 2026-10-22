@@ -7,10 +7,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.spm_java.R;
 import com.example.spm_java.model.PantryItem;
+import com.example.spm_java.util.AppPrefs;
 import com.google.android.material.color.MaterialColors;
 
 import java.text.DecimalFormat;
@@ -32,6 +34,9 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.ViewHolder
     private final List<PantryItem> items = new ArrayList<>();
     private final Listener listener;
 
+    // Whether items expiring soon are highlighted, taken from the settings screen
+    private boolean highlightSoon;
+
     // Formats decimals with trailing 0s to whole number
     private final DecimalFormat quantityFormat = new DecimalFormat("0.##", DecimalFormatSymbols.getInstance(Locale.ROOT));
 
@@ -41,9 +46,10 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.ViewHolder
     // --- Methods ---
 
     // Replaces the shown items
-    public void setItems(List<PantryItem> newItems) {
+    public void setItems(List<PantryItem> newItems, boolean highlightExpiringSoon) {
 
         // Clear, add and notify change
+        highlightSoon = highlightExpiringSoon;
         items.clear();
         items.addAll(newItems);
         notifyDataSetChanged();
@@ -79,8 +85,11 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.ViewHolder
             // Check expiry
             boolean expired = item.isExpired();
 
+            // Expiring soon only applies when the setting is on
+            boolean soon = highlightSoon && item.isExpiringSoon(AppPrefs.EXPIRING_SOON_DAYS);
+
             // Set label depending on expired
-            int label = expired ? R.string.pantry_item_expired : R.string.pantry_item_expires;
+            int label = expired ? R.string.pantry_item_expired : (soon ? R.string.pantry_item_expires_soon : R.string.pantry_item_expires);
 
             // Set color depending on expired
             int colorAttr = expired ? androidx.appcompat.R.attr.colorError : com.google.android.material.R.attr.colorOnSurfaceVariant;
@@ -88,7 +97,7 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.ViewHolder
             // Show expiry data, set text and color
             holder.expiry.setVisibility(View.VISIBLE);
             holder.expiry.setText(holder.itemView.getContext().getString(label, item.getExpiryDate().toString()));
-            holder.expiry.setTextColor(MaterialColors.getColor(holder.expiry, colorAttr));
+            holder.expiry.setTextColor(soon ? ContextCompat.getColor(holder.itemView.getContext(), R.color.expiring_soon) : MaterialColors.getColor(holder.expiry, colorAttr));
 
         }
 

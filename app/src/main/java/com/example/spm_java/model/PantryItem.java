@@ -32,7 +32,7 @@ public class PantryItem {
 
 
     // --- Getters & Setters ---
-    // Not sure what ill use so i added all
+    // Not sure what ill use so I added all
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 
@@ -52,5 +52,8 @@ public class PantryItem {
 
     // Returns whether a pantry item is expired or not
     public boolean isExpired() { return expiryDate != null && expiryDate.isBefore(LocalDate.now()); }
+
+    // Returns whether the item is not yet expired but expires today or within the given number of days
+    public boolean isExpiringSoon(int days) { return expiryDate != null && !isExpired() && !expiryDate.isAfter(LocalDate.now().plusDays(days)); }
 
 }
