@@ -19,4 +19,23 @@
     <string name="pantry_add">Add ingredient</string>
     <string name="pantry_remove_expired">Remove expired</string>
 
+    <!--  Add / Edit Ingredient Screen  -->
+    <string name="add_edit_title_add">Add ingredient</string>
+    <string name="add_edit_title_edit">Edit ingredient</string>
+    <string name="add_edit_hint_name">Name</string>
+    <string name="add_edit_hint_quantity">Quantity</string>
+    <string name="add_edit_hint_unit">Unit</string>
+    <string name="add_edit_hint_expiry">Expiry date (optional)</string>
+    <string name="add_edit_clear_date">Clear date</string>
+    <string name="add_edit_save">Save</string>
+    <string name="add_edit_cancel">Cancel</string>
+
+    <!--  Add / Edit Ingredient Errors  -->
+    <string name="error_name_required">Enter an ingredient name</string>
+    <string name="error_quantity_invalid">Enter a valid quantity</string>
+    <string name="error_quantity_positive">Quantity must be greater than 0</string>
+    <string name="error_unit_required">Choose a unit</string>
+    <string name="error_not_found">Ingredient not found</string>
+    <string name="error_save_failed">Could not save the ingredient</string>
+
 </resources>
