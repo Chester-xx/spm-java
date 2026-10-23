@@ -26,6 +26,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     private final List<Recipe> recipes = new ArrayList<>();
     private final Listener listener;
 
+    // Optional line shown instead of the ingredient count, one per recipe, empty when not used
+    private final List<String> notes = new ArrayList<>();
+
     // --- Constructor ---
     public RecipeAdapter(Listener listener) { this.listener = listener; }
 
@@ -37,7 +40,17 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         // Clear, add and notify change
         recipes.clear();
         recipes.addAll(newRecipes);
+        notes.clear();
         notifyDataSetChanged();
+
+    }
+
+    // Replaces the shown recipes with a note under each, e.g. what is missing
+    public void setRecipes(List<Recipe> newRecipes, List<String> newNotes) {
+
+        // Set the recipes first, which clears the old notes, then add the new notes
+        setRecipes(newRecipes);
+        notes.addAll(newNotes);
 
     }
 
@@ -61,7 +74,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
         // Set the name, quantity
         holder.name.setText(recipe.getName());
-        holder.summary.setText(holder.itemView.getResources().getQuantityString(R.plurals.recipe_ingredient_count, count, count));
+        holder.summary.setText(position < notes.size() ? notes.get(position) : holder.itemView.getResources().getQuantityString(R.plurals.recipe_ingredient_count, count, count));
 
         // Bind view to event listener
         holder.itemView.setOnClickListener(v -> listener.onRecipeClick(recipe));

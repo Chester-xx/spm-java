@@ -5,38 +5,72 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--  Screen title  -->
+    <!--  Screen title with a grey line under it  -->
     <TextView
         android:id="@+id/text_title"
+        style="@style/TextAppearance.Spm.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="@string/recipes_title"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:text="@string/recipes_title" />
 
-    <!--  Recipes the pantry can make, replaced by the empty message when there are none  -->
-    <FrameLayout
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border" />
+
+    <!--  Both lists scroll together, so the almost there list can sit below the strict list  -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_recipes"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-        <TextView
-            android:id="@+id/text_empty"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="24dp"
-            android:text="@string/recipes_empty"
-            android:textSize="16sp"
-            android:visibility="gone" />
+            android:orientation="vertical"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp">
 
-    </FrameLayout>
+            <!--  Recipes the pantry can make, the empty message is shown when there are none  -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_recipes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <TextView
+                android:id="@+id/text_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="24dp"
+                android:text="@string/recipes_empty"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <!--  Almost there: recipes short of exactly one ingredient, kept apart from the list above  -->
+            <TextView
+                android:id="@+id/text_almost_header"
+                style="@style/TextAppearance.Spm.Section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:text="@string/almost_header"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_almost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

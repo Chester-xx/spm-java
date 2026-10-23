@@ -14,6 +14,25 @@ import java.util.Map;
 // Matches a recipe to every ingredient needed that is available in the pantry and fills its quantity requirement
 public class RecipeMatcher {
 
+    // A recipe that is short of exactly one ingredient, kept apart from the strict matches
+    public static class AlmostThere {
+
+        // --- Attributes ---
+        public final Recipe recipe;
+        public final RecipeIngredient missing; // the one ingredient the pantry cannot cover
+        public final boolean notEnough; // true when some is in the pantry but too little, false when none is
+
+        // --- Constructor ---
+        AlmostThere(Recipe recipe, RecipeIngredient missing, boolean notEnough) {
+
+            this.recipe = recipe;
+            this.missing = missing;
+            this.notEnough = notEnough;
+
+        }
+
+    }
+
     // --- Constructor ---
     private RecipeMatcher() { }
 
@@ -31,6 +50,32 @@ public class RecipeMatcher {
 
         // Return the makable list of recipes
         return makeable;
+
+    }
+
+    // Returns the recipes that are short of exactly one ingredient, never any recipe from findMakeable
+    public static List<AlmostThere> findAlmostThere(List<Recipe> recipes, List<PantryItem> pantry) {
+
+        // Build the same available map the strict match uses
+        Map<String, Map<Unit.Family, Double>> available = buildAvailable(pantry);
+        List<AlmostThere> almost = new ArrayList<>();
+
+        for (Recipe recipe : recipes) {
+
+            // A recipe without ingredients is never suggested
+            if (recipe.getIngredients().isEmpty()) continue;
+
+            // Only recipes with exactly one uncovered ingredient are almost there
+            List<RecipeIngredient> uncovered = findUncovered(recipe, available);
+            if (uncovered.size() != 1) continue;
+
+            // Some of the ingredient in the pantry means there is not enough, none means it is missing
+            RecipeIngredient missing = uncovered.get(0);
+            almost.add(new AlmostThere(recipe, missing, getHave(missing, available) != null));
+
+        }
+
+        return almost;
 
     }
 
@@ -62,34 +107,38 @@ public class RecipeMatcher {
     // Returns true or false on whether a recipe can be made with the specified available pantry ingredients
     private static boolean canMake(Recipe recipe, Map<String, Map<Unit.Family, Double>> available) {
 
-        // Cannot make recipe if ingredients is false
-        if (recipe.getIngredients().isEmpty()) return false;
+        // Cannot make recipe if it has no ingredients, otherwise every ingredient must be covered
+        return !recipe.getIngredients().isEmpty() && findUncovered(recipe, available).isEmpty();
 
-        // For each ingredient
+    }
+
+    // Returns every ingredient of the recipe that the pantry cannot cover, this is the one strict rule both lists share
+    private static List<RecipeIngredient> findUncovered(Recipe recipe, Map<String, Map<Unit.Family, Double>> available) {
+
+        List<RecipeIngredient> uncovered = new ArrayList<>();
+
         for (RecipeIngredient ingredient : recipe.getIngredients()) {
 
-            // Create a mapped family group and its quantity
-            Map<Unit.Family, Double> byFamily = available.get(NameNormalizer.normalize(ingredient.getName()));
-
-            // If the family map is empty, cannot be made
-            if (byFamily == null) return false;
-
-            // Ensure that the unit family is equal
-            Double have = byFamily.get(ingredient.getUnit().getFamily());
-
-            // Total quantity that we have stored is null, cannot be made
-            if (have == null) return false;
+            // What we have of this ingredient in its unit family, null if there is none
+            Double have = getHave(ingredient, available);
 
             // Get what quantity is needed of the ingredient
             double need = ingredient.getUnit().getBaseValue(ingredient.getQuantity());
 
-            // If the needed quantity is greater than what we have stored, cannot be made
-            if (have < need) return false;
+            // Not covered when there is none, or less than what is needed
+            if (have == null || have < need) uncovered.add(ingredient);
 
         }
 
-        // Return true that the recipe can be made
-        return true;
+        return uncovered;
+
+    }
+
+    // Returns the pantry total for an ingredient in its unit family, different families never match
+    private static Double getHave(RecipeIngredient ingredient, Map<String, Map<Unit.Family, Double>> available) {
+
+        Map<Unit.Family, Double> byFamily = available.get(NameNormalizer.normalize(ingredient.getName()));
+        return byFamily == null ? null : byFamily.get(ingredient.getUnit().getFamily());
 
     }
 

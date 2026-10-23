@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.spm_java.R;
@@ -85,7 +86,7 @@ import java.util.List;
         public void onDeleteClick(PantryItem item) {
 
             // Dialog screen to prompt user on their deletion
-            new MaterialAlertDialogBuilder(this)
+            AlertDialog confirmDialog = new MaterialAlertDialogBuilder(this)
 
                 // Prompt user to confirm ingredient deletion
                 .setTitle(R.string.delete_title)
@@ -99,12 +100,21 @@ import java.util.List;
                     loadItems();
                 })
 
-                // Show dialog screen
-                .show();
+                // Show dialog screen, confirm button in red
+                .create();
+            showDanger(confirmDialog);
 
         }
 
         // --- Methods ---
+
+        // Shows a dialog with the confirm button in red, as the action removes data
+        private void showDanger(AlertDialog dialog) {
+
+            dialog.show();
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getColor(R.color.red_light));
+
+        }
 
         // Shows the list, or the empty message when there are no items
         private void loadItems() {
@@ -137,7 +147,7 @@ import java.util.List;
             }
 
             // Show dialog message to user
-            new MaterialAlertDialogBuilder(this)
+            AlertDialog confirmDialog = new MaterialAlertDialogBuilder(this)
 
                 // set title, message and buttons
                 .setTitle(R.string.remove_expired_title)
@@ -151,8 +161,9 @@ import java.util.List;
                     loadItems();
                 })
 
-                // Show dialog message
-                .show();
+                // Show dialog message, confirm button in red
+                .create();
+            showDanger(confirmDialog);
 
         }
 

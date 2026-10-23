@@ -73,4 +73,9 @@
     <string name="settings_default_unit">Default unit</string>
     <string name="settings_default_unit_help">Pre-selected when adding an ingredient</string>
 
+    <!--  Almost There List  -->
+    <string name="almost_header">Almost there: one ingredient short</string>
+    <string name="almost_missing">Missing: %1$s</string>
+    <string name="almost_not_enough">Not enough: %1$s</string>
+
 </resources>

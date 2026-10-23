@@ -6,6 +6,7 @@
     android:id="@+id/base_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/canvas"
     android:orientation="vertical">
 
     <!--  Layout for main screen contents  -->
@@ -15,6 +16,12 @@
         android:layout_height="0dp"
         android:layout_weight="1"
     />
+
+    <!--  Grey line above the navigation bar  -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border" />
 
     <!--  Target menu navigation object  -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

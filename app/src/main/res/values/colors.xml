@@ -2,5 +2,24 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="expiring_soon">#B26A00</color>
+
+    <!-- Surfaces -->
+    <color name="canvas">#0D1117</color>
+    <color name="surface">#161B22</color>
+    <color name="surface_raised">#21262D</color>
+    <color name="border">#30363D</color>
+
+    <!-- Text -->
+    <color name="text_primary">#E6EDF3</color>
+    <color name="text_secondary">#8B949E</color>
+
+    <!-- Actions: green for safe actions, red for delete or unsafe -->
+    <color name="green">#238636</color>
+    <color name="green_light">#3FB950</color>
+    <color name="green_subtle">#1A2F20</color>
+    <color name="red">#DA3633</color>
+    <color name="red_light">#F85149</color>
+
+    <!-- Status -->
+    <color name="expiring_soon">#D29922</color>
 </resources>

@@ -14,12 +14,17 @@
         <!--  Screen title, set to add or edit in code  -->
         <TextView
             android:id="@+id/text_title"
+            style="@style/TextAppearance.Spm.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/add_edit_title_add" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/add_edit_title_add"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:background="@color/border" />
 
         <!--  Ingredient name, max 30 characters  -->
         <com.google.android.material.textfield.TextInputLayout
@@ -60,9 +65,8 @@
                     android:id="@+id/edit_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:digits="0123456789.," />
-
+                    android:digits="0123456789.,"
+                    android:inputType="numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,13 +109,15 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--  Removes the date, red because it clears data  -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_clear_expiry"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="@string/add_edit_clear_date" />
+            android:text="@string/add_edit_clear_date"
+            android:textColor="@color/red_light" />
 
         <!--  Actions  -->
         <LinearLayout
@@ -122,7 +128,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_cancel"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Widget.Spm.Button.Outlined"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

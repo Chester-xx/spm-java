@@ -53,10 +53,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         BottomNavigationView nav = findViewById(R.id.bottom_nav);
         nav.setSelectedItemId(getSelectedNavItemId());
 
-        // Select activity to navigate to
+        // Select activity to navigate to, false keeps this screen's own tab highlighted
         nav.setOnItemSelectedListener(item -> {
             openTab(item.getItemId());
-            return true;
+            return false;
         });
 
         // Reselect activity to navigate to

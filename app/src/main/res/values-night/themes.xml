@@ -1,7 +1,31 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.SmartPantryManager" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+    <!-- Same as the default theme, the app is always dark -->
+    <style name="Base.Theme.SmartPantryManager" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/green_subtle</item>
+        <item name="colorOnPrimaryContainer">@color/green_light</item>
+        <item name="colorSecondaryContainer">@color/green_subtle</item>
+        <item name="colorOnSecondaryContainer">@color/green_light</item>
+        <item name="colorSurface">@color/canvas</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        <item name="colorSurfaceContainer">@color/surface</item>
+        <item name="colorSurfaceContainerHigh">@color/surface_raised</item>
+        <item name="colorOutline">@color/border</item>
+        <item name="colorOutlineVariant">@color/border</item>
+        <item name="colorError">@color/red_light</item>
+        <item name="colorOnError">@color/white</item>
+        <item name="android:colorBackground">@color/canvas</item>
+        <item name="android:statusBarColor">@color/canvas</item>
+        <item name="android:navigationBarColor">@color/canvas</item>
+
+        <item name="materialButtonStyle">@style/Widget.Spm.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.Spm.Button.Outlined</item>
+        <item name="textInputStyle">@style/Widget.Material3.TextInputLayout.OutlinedBox</item>
+        <item name="bottomNavigationStyle">@style/Widget.Spm.BottomNav</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Spm.Dialog</item>
     </style>
+
 </resources>

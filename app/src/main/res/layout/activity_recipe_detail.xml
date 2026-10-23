@@ -14,43 +14,52 @@
         <!--  Recipe name, set in code  -->
         <TextView
             android:id="@+id/text_recipe_title"
+            style="@style/TextAppearance.Spm.Title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content" />
 
-        <!--  Ingredient list, one per line  -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/border" />
+
+        <!--  Ingredient list, one per line, inside a bordered card  -->
         <TextView
+            style="@style/TextAppearance.Spm.Section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/recipe_detail_ingredients"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="@string/recipe_detail_ingredients" />
 
         <TextView
             android:id="@+id/text_ingredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:background="@drawable/bg_card"
             android:lineSpacingMultiplier="1.2"
+            android:padding="16dp"
+            android:textColor="@color/text_primary"
             android:textSize="16sp" />
 
         <!--  Method, numbered steps  -->
         <TextView
+            style="@style/TextAppearance.Spm.Section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/recipe_detail_method"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="@string/recipe_detail_method" />
 
         <TextView
             android:id="@+id/text_steps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:background="@drawable/bg_card"
             android:lineSpacingMultiplier="1.2"
+            android:padding="16dp"
+            android:textColor="@color/text_primary"
             android:textSize="16sp" />
 
     </LinearLayout>

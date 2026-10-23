@@ -5,15 +5,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--  Screen title  -->
+    <!--  Screen title with a grey line under it  -->
     <TextView
         android:id="@+id/text_title"
+        style="@style/TextAppearance.Spm.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="@string/pantry_title"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:text="@string/pantry_title" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border" />
 
     <!--  Ingredient list, replaced by the empty message when there are no items  -->
     <FrameLayout
@@ -25,6 +29,9 @@
             android:id="@+id/recycler_pantry"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <TextView
@@ -34,6 +41,7 @@
             android:layout_gravity="center"
             android:padding="24dp"
             android:text="@string/pantry_empty"
+            android:textColor="@color/text_secondary"
             android:textSize="16sp"
             android:visibility="gone" />
 
@@ -54,9 +62,10 @@
             android:text="@string/pantry_add"
             app:icon="@drawable/icon_add" />
 
+        <!--  Red outline, removes data  -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_remove_expired"
-            style="@style/Widget.Material3.Button.OutlinedButton"
+            style="@style/Widget.Spm.Button.Danger"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
